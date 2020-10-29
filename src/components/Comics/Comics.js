@@ -1,3 +1,5 @@
+//Práctica
+
 import React, {Component} from 'react';
 import Comic from './Comic';
 import './Comics.css';

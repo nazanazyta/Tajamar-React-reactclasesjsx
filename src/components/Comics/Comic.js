@@ -1,3 +1,5 @@
+//Práctica
+
 import React, {Component} from 'react';
 
 class Comic extends Component{
