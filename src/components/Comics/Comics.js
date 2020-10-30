@@ -51,12 +51,70 @@ class Comics extends Component{
         this.setState({favorito: comic});
     }
 
+    crearComic = () => {
+        var titulo = document.getElementById("cajatitulo").value;
+        var imagen = document.getElementById("cajaimagen").value;
+        var desc = document.getElementById("cajadesc").value;
+        //CREAMOS UN ÚNICO CÓMIC
+        var comic = {
+            titulo: titulo
+            , imagen: imagen
+            , descripcion: desc
+        };
+        //RECUPERAMOS EL ARRAY DE CÓMICS
+        var comics = this.state.comics;
+        //INCLUIMOS EL CÓMIC DENTRO DEL ARRAY
+        comics.push(comic);
+        //ACTUALIZAMOS LA VARIABLE state PARA LA VISTA
+        this.setState({comics: comics});
+    }
+
+    eliminarComic = index => {
+        //QUEREMOS ELIMINAR UN CÓMIC ENTRE MUCHOS DE UN ARRAY
+        //  Array.splice(INDICE, ELEMENTOS A ELIMINAR) => Array.splice(miComicEliminar, 1)
+        var comics = this.state.comics;
+        if(this.state.favorito == comics[index]){
+            this.setState({
+                favorito: null
+            });
+        }
+        comics.splice(index, 1);
+        this.setState({
+            comics: comics
+        });
+    }
+
+    updateComic = index => {
+        var titulo = document.getElementById("cajatitulo").value;
+        var imagen = document.getElementById("cajaimagen").value;
+        var desc = document.getElementById("cajadesc").value;
+        //RECUPERAMOS TODOS LOS CÓMICS
+        var comics = this.state.comics;
+        //RECUPERAMOS EL CÓMIC POR SU ÍNDICE
+        var comic = comics[index];
+        comic.titulo = titulo;
+        comic.imagen = imagen;
+        comic.descripcion = desc;
+        //ACTUALIZAMOS ESTADO
+        this.setState({comics: comics});
+    }
+
     render(){
         return(
-            <div>
+            <div className="margen">
+                <div>
+                    <br />
+                    <label>Título: </label>
+                    <input type="text" id="cajatitulo" />&nbsp;&nbsp;
+                    <label>Imagen: </label>
+                    <input type="text" id="cajaimagen" />&nbsp;&nbsp;
+                    <label>Descripción: </label>
+                    <input type="text" id="cajadesc" />&nbsp;&nbsp;
+                    <button onClick={this.crearComic}>Nuevo cómic</button>
+                </div>
                 {/* {CONDICION && HTML} */}
                 {this.state.favorito && 
-                    (<div>
+                    (<div className="fav">
                         <h1 style={{color:"blue"}}>{this.state.favorito.titulo}</h1>
                         <img src={this.state.favorito.imagen} alt="#" />
                         <p>{this.state.favorito.descripcion}</p>
@@ -64,7 +122,14 @@ class Comics extends Component{
                 }
                 {this.state.comics.map((comic, i) => {
                     // return(<Comic key={i} tit={comic.titulo} img={comic.imagen} descrip={comic.descripcion} />);
-                    return(<Comic key={i} comic={comic} selecComic={this.seleccionarComic} />);
+                    return(
+                        <React.Fragment key={i}>
+                            <Comic index={i} eliComic={this.eliminarComic} comic={comic} selecComic={this.seleccionarComic} />
+                            <button style={{backgroundColor: "blue", color: "white"}} onClick={() => {
+                                this.updateComic(i);
+                            }}>Modificar cómic</button>
+                        </React.Fragment>
+                    );
                 })}
             </div>
         )
