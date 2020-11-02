@@ -73,7 +73,7 @@ class Comics extends Component{
         //QUEREMOS ELIMINAR UN CÓMIC ENTRE MUCHOS DE UN ARRAY
         //  Array.splice(INDICE, ELEMENTOS A ELIMINAR) => Array.splice(miComicEliminar, 1)
         var comics = this.state.comics;
-        if(this.state.favorito == comics[index]){
+        if(this.state.favorito === comics[index]){
             this.setState({
                 favorito: null
             });

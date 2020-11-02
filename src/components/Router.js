@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 //PARA ROUTER NECESITAMOS AGREGAR UNOS COMPONENTES DE LA
 //LIBRERÍA DEL ROUTER-DOM (npm install --save react-router-dom)
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
