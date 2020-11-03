@@ -8,7 +8,12 @@ import reportWebVitals from './reportWebVitals';
 // import Numeros from './components/Numeros/Numeros';
 // import Comics from './components/Comics/Comics';
 // import EjemploSimple from './components/Formularios/EjemploSimple';
-import Collatz from './components/Formularios/Collatz';
+// import Collatz from './components/Formularios/Collatz';
+// import CollatzPaco from './components/Formularios/CollatzPaco';
+// import SeleccionSimple from './components/Formularios/SeleccionSimple';
+// import SeleccionMultiple from './components/Formularios/SeleccionMultiple';
+// import ComicsMultiple from './components/Formularios/ComicsMultiple';
+import SeleccionComponente from './components/Formularios/SeleccionComponent';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,7 +24,12 @@ ReactDOM.render(
     {/* <Numeros /> */}
     {/* <Comics /> */}
     {/* <EjemploSimple /> */}
-    <Collatz />
+    {/* <Collatz /> */}
+    {/* <CollatzPaco /> */}
+    {/* <SeleccionSimple /> */}
+    {/* <SeleccionMultiple /> */}
+    {/* <ComicsMultiple /> */}
+    <SeleccionComponente />
   </React.StrictMode>,
   document.getElementById('root')
 );
